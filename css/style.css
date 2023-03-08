@@ -26,14 +26,14 @@ header {
 }
 
 .card {
-    padding-bottom: 1rem;
-    margin: 2.5rem auto;
+    padding: 2rem 0;
+    margin: 1rem auto;
     line-height: 2rem;
-    border-bottom: 3px solid white;
+    border-top: 3px solid white;
 }
 
 .card .fullName {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .card .role {
@@ -41,7 +41,67 @@ header {
     font-style: italic;
 }
 
-.img-container img {
+.card-img img {
     width: 100%;
     max-width: 400px;
+}
+
+@media all and (min-width: 768px) {
+
+    header {
+        font-size: 3rem ;
+    }
+
+    #cards-container {
+        max-width: 90%;
+    }
+
+    .card > * {
+        display: inline-block;
+        width: 40%;
+        vertical-align: middle;
+        line-height: 5rem;
+    }
+
+    .card-text {
+        padding: 1rem;
+    }
+    .card .fullName {
+        font-size: 2.5rem;
+    }
+    
+    .card .role {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: lightgray;
+    }
+}
+
+@media all and (min-width: 992px) {
+    #cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1300px;
+    }
+    .card {
+        border: 3px solid white;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        padding-top: 0;
+        margin: 1rem;
+        width: calc(100% / 3 - 2rem);
+    }
+    .card > * {
+        display: block;
+        width: unset;
+    }
+
+    .card-text {
+        line-height: 2.5rem;
+    }
+    .card-img img {
+        border-bottom: 3px solid white;
+    }
+    
 }

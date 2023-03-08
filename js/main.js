@@ -1,9 +1,9 @@
 // MILESTONE 0:
 // Creare l’array di oggetti con le informazioni fornite.
 let userData = {
-    imgPath : ["wayne-barnett-founder-ceo.jpg","angela-caroll-chief-editor.jpg","walter-gordon-office-manager.jpg","angela-lopez-social-media-manager.jpg","scott-estrada-developer.jpg","barbara-ramos-graphic-designer.jpg"],
     fullName : ["Wayne Barnett","Angela Caroll","Walter Gordon","Angela Lopez","Scott Estrada","Barbara Ramos"],
-    role : ["Founder & CEO","Chief Editor","Office Manager","Social Media Manager","Developer","Graphic Designer"]
+    role : ["Founder & CEO","Chief Editor","Office Manager","Social Media Manager","Developer","Graphic Designer"],
+    imgPath : ["wayne-barnett-founder-ceo.jpg","angela-caroll-chief-editor.jpg","walter-gordon-office-manager.jpg","angela-lopez-social-media-manager.jpg","scott-estrada-developer.jpg","barbara-ramos-graphic-designer.jpg"]
 }
 
 const teamMembers = [];
@@ -80,25 +80,33 @@ const cardsContainerDom = document.getElementById('cards-container');
 
 // scorro i membri (object) del team
 for (let i=0; i<teamMembersNumber; i++){
-    // ogni membro sarà descritto in un "p"
+    // ogni membro sarà descritto in una "card"
     const card = document.createElement('div');
-    card.classList.add('card')
+    card.classList.add('card');
+
+    // la card avrà una foto...
+    const cardImg = document.createElement('div');
+    cardImg.classList.add('card-img');
+    card.append(cardImg);
+    // ...e una parte di testo
+    const cardText = document.createElement('div');
+    cardText.classList.add('card-text')
+    card.append(cardText);
     // scorro gli attributi (key) dei membri del team 
     for (let key in teamMembers[i]){
-        const cardInfo = document.createElement('div');
         // verifico se sto esaminando la path dell'immagine o una stringa
         if (key == 'imgPath'){
             // CASO 1: path immagine 
             const picture = document.createElement('img');
             picture.src = `img/${teamMembers[i][key]}`;
-            cardInfo.classList.add('img-container')
-            cardInfo.append(picture);
+            cardImg.append(picture);
         } else {
             // CASO 2: stringa
-            cardInfo.innerHTML = (`${teamMembers[i][key]}`);
-            cardInfo.classList.add(`${key}`)
+            const text = document.createElement('div');
+            text.innerHTML = (`${teamMembers[i][key]}`);
+            text.classList.add(`${key}`)
+            cardText.append(text);
         }
-        card.append(cardInfo);
     }
     cardsContainerDom.append(card);
 }
