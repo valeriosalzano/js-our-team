@@ -82,15 +82,12 @@ header {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 1300px;
+        margin-bottom: 3rem;
     }
     .card {
-        border: 3px solid white;
-        border-radius: 1.5rem;
-        overflow: hidden;
-        padding-top: 0;
         margin: 1rem;
-        width: calc(100% / 3 - 2rem);
+        width: calc(100% / 2 - 2rem);
+        border-top: none;
     }
     .card > * {
         display: block;
@@ -99,9 +96,16 @@ header {
 
     .card-text {
         line-height: 2.5rem;
-    }
-    .card-img img {
         border-bottom: 3px solid white;
     }
     
+}
+
+@media all and (min-width: 1200px){
+    #cards-container {
+        max-width: 1400px;
+    }
+    .card {
+        width: calc(100% / 3 - 2rem);
+    }
 }
