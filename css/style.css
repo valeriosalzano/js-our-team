@@ -4,7 +4,44 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
 /* google font open sans */
 /* html {
     font-family: 'Open Sans', sans-serif;
 } */
+
+header {
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+#cards-container {
+    padding: 1rem;
+    max-width: 500px;
+    margin: auto;
+}
+
+.card {
+    padding-bottom: 1rem;
+    margin: 2.5rem auto;
+    line-height: 2rem;
+    border-bottom: 3px solid white;
+}
+
+.card .fullName {
+    font-size: 1.5rem;
+}
+
+.card .role {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.img-container img {
+    width: 100%;
+    max-width: 400px;
+}

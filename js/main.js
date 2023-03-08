@@ -1,14 +1,14 @@
 // MILESTONE 0:
 // Creare l’array di oggetti con le informazioni fornite.
 let userData = {
-   fullName : ["Wayne Barnett","Angela Caroll","Walter Gordon","Angela Lopez","Scott Estrada","Barbara Ramos"],
-   role : ["Founder & CEO","Chief Editor","Office Manager","Social Media Manager","Developer","Graphic Designer"],
-   imgPath : ["wayne-barnett-founder-ceo.jpg","angela-caroll-chief-editor.jpg","walter-gordon-office-manager.jpg","angela-lopez-social-media-manager.jpg","scott-estrada-developer.jpg","barbara-ramos-graphic-designer.jpg"]
+    imgPath : ["wayne-barnett-founder-ceo.jpg","angela-caroll-chief-editor.jpg","walter-gordon-office-manager.jpg","angela-lopez-social-media-manager.jpg","scott-estrada-developer.jpg","barbara-ramos-graphic-designer.jpg"],
+    fullName : ["Wayne Barnett","Angela Caroll","Walter Gordon","Angela Lopez","Scott Estrada","Barbara Ramos"],
+    role : ["Founder & CEO","Chief Editor","Office Manager","Social Media Manager","Developer","Graphic Designer"]
 }
 
-let teamMembers = [];
+const teamMembers = [];
 
-let teamMembersNumber = 6;
+const teamMembersNumber = 6;
 for (let i=0; i<teamMembersNumber; i++){
     let newTeamMember = {};
     for (let key in userData){
@@ -47,29 +47,58 @@ for (let i=0; i<teamMembersNumber; i++){
 // BONUS 1:
 // Trasformare la stringa foto in una immagine effettiva
 
-const teamDataContainerDom = document.getElementById('teamData-container');
+/*
+    const teamDataContainerDom = document.getElementById('teamData-container');
+
+    // scorro i membri (object) del team
+    for (let i=0; i<teamMembersNumber; i++){
+        // ogni membro sarà descritto in un "p"
+        const teamListRow = document.createElement('p');
+        // scorro gli attributi (key) dei membri del team 
+        for (let key in teamMembers[i]){
+            const teamListCol = document.createElement('span');
+            // verifico se sto esaminando la path dell'immagine o una stringa
+            if (key == 'imgPath'){
+                // CASO 1: path immagine 
+                const picture = document.createElement('img');
+                picture.src = `img/${teamMembers[i][key]}`;
+                teamListCol.append(picture);
+            } else {
+                // CASO 2: stringa
+                teamListCol.innerHTML = (`${key} : ${teamMembers[i][key]}; <br>`);
+            }
+            teamListRow.append(teamListCol);
+        }
+        teamDataContainerDom.append(teamListRow);
+    }
+*/
+
+// BONUS 2:
+// Organizzare i singoli membri in card/schede
+
+const cardsContainerDom = document.getElementById('cards-container');
 
 // scorro i membri (object) del team
 for (let i=0; i<teamMembersNumber; i++){
     // ogni membro sarà descritto in un "p"
-    const teamListRow = document.createElement('p');
+    const card = document.createElement('div');
+    card.classList.add('card')
     // scorro gli attributi (key) dei membri del team 
     for (let key in teamMembers[i]){
-        const teamListCol = document.createElement('span');
+        const cardInfo = document.createElement('div');
         // verifico se sto esaminando la path dell'immagine o una stringa
         if (key == 'imgPath'){
             // CASO 1: path immagine 
             const picture = document.createElement('img');
             picture.src = `img/${teamMembers[i][key]}`;
-            teamListCol.append(picture);
+            cardInfo.classList.add('img-container')
+            cardInfo.append(picture);
         } else {
             // CASO 2: stringa
-            teamListCol.innerHTML = (`${key} : ${teamMembers[i][key]}; <br>`);
+            cardInfo.innerHTML = (`${teamMembers[i][key]}`);
+            cardInfo.classList.add(`${key}`)
         }
-        teamListRow.append(teamListCol);
+        card.append(cardInfo);
     }
-    teamDataContainerDom.append(teamListRow);
+    cardsContainerDom.append(card);
 }
-
-// BONUS 2:
-// Organizzare i singoli membri in card/schede
