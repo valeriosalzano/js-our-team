@@ -30,7 +30,17 @@ for (let i=0; i<teamMembersNumber; i++){
 // MILESTONE 2:
 // Stampare le stesse informazioni su DOM sottoforma di stringhe
 
+const teamDataContainerDom = document.getElementById('teamData-container');
 
+for (let i=0; i<teamMembersNumber; i++){
+    const teamListRow = document.createElement('p');
+    for (let key in teamMembers[i]){
+        const teamListCol = document.createElement('span');
+        teamListCol.innerHTML = (`${key} : ${teamMembers[i][key]}; <br>`);
+        teamListRow.append(teamListCol);
+    }
+    teamDataContainerDom.append(teamListRow);
+}
 
 // BONUS 1:
 // Trasformare la stringa foto in una immagine effettiva
