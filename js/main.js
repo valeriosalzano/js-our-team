@@ -9,7 +9,7 @@ let userData = {
 let teamMembers = [];
 
 let teamMembersNumber = 6;
-for (i=0; i<teamMembersNumber; i++){
+for (let i=0; i<teamMembersNumber; i++){
     let newTeamMember = {};
     for (let key in userData){
         newTeamMember[key] = userData[key][i];
@@ -20,7 +20,12 @@ for (i=0; i<teamMembersNumber; i++){
 // MILESTONE 1:
 // Stampare su console le informazioni di nome, ruolo e la stringa della foto
 
-
+for (let i=0; i<teamMembersNumber; i++){
+    console.log(`${i+1}° membro del team:`)
+    for (let key in teamMembers[i]){
+        console.log(`${key} : ${teamMembers[i][key]}`)
+    }
+}
 
 // MILESTONE 2:
 // Stampare le stesse informazioni su DOM sottoforma di stringhe
